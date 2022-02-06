@@ -15,6 +15,7 @@ const program = require('commander')
   .option('-k, --kerning', 'kerning')
   .option('-a, --anchor [value]', 'anchor point')
   .option('-d, --debug', 'debug')
+  .option('-f, --font [value]', 'font')
   .parse(process.argv);
 
 if(program.args.length < 1) {
@@ -32,7 +33,7 @@ const options = {
 };
 
 const TextToSVG = require('../build/src');
-const textToSVG = TextToSVG.loadSync();
+const textToSVG = TextToSVG.loadSync(program.font);
 
 var svg;
 if (!program.debug) {
